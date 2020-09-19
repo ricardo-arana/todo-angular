@@ -25,4 +25,13 @@ export class AppComponent {
     this.tareas.push(tareaAgregar);
     this.storage.grabarStorage(this.tareas);
   }
+
+  completar(id: string) {
+    this.tareas.forEach( tareaAcompletar => {
+    if( tareaAcompletar.id === id ) {
+      tareaAcompletar.estado = !tareaAcompletar.estado;
+    }
+  });
+  this.storage.grabarStorage(this.tareas);
+  }
 }
