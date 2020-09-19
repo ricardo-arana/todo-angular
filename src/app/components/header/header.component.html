@@ -1,3 +1,8 @@
 <header class="header">
-    <h1>Lista de tareas</h1>
+    <h1>{{ title }}</h1>
+    <input class="new-todo"
+    name="tarea"
+    [(ngModel)]="tarea"
+    (keyup.enter)="agregarTarea()"
+    placeholder="¿Qué necesitas hacer?" autofocus>
 </header>

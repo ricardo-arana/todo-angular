@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Tarea } from './models/tarea.model';
+import { StorageService } from './providers/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-list';
+  title = 'Lista de tareas';
+  tareas: Tarea[] = [];
+
+  constructor(private storage: StorageService) {
+    this.tareas = this.storage.obtenerStorage();
+   }
+
+  obtenerTarea(descripcion: string) {
+    const id = new Date().toISOString();
+    const tareaAgregar: Tarea = {
+      descripcion,
+      estado: false,
+      id
+    };
+    this.tareas.push(tareaAgregar);
+    this.storage.grabarStorage(this.tareas);
+  }
 }

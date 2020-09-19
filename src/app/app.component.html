@@ -1,5 +1,5 @@
 <section class="todoapp">
-  <app-header></app-header>
-  <app-todo></app-todo>
+  <app-header [title]="title" (onChange)="obtenerTarea($event)" ></app-header>
+  <app-todo [tareas]="tareas"></app-todo>
 </section>
 <app-footer></app-footer>
